@@ -12,11 +12,13 @@ function App() {
     <Router>
       <Switch>
         <Route exact path ="/detail/:id">
-          {/* Detail Component Here */}
           <Detail />
         </Route>
+        <Route exact path="/:search">
+          <List />
+        </Route>
+        {/* additional home route so it will go to list even if there is no search */}
         <Route exact path="/">
-          {/* List Home Page Component Here */}
           <List />
         </Route>
       </Switch>

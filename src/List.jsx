@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { fetchPokemon } from './services/fetch-utils';
 import Item from './Item';
+import { useHistory } from 'react-router-dom';
 
 export default function List() {
   // STATE
@@ -10,7 +11,7 @@ export default function List() {
   const [currentPage, setCurrentPage] = useState(1);
   const [search, setSearch] = useState('');
 
-  
+  const history = useHistory();
   
   // ON LOAD AND PAGE CHANGE useEffect
   useEffect(() => {
@@ -43,7 +44,11 @@ export default function List() {
       <label htmlFor="">
         Search: 
         <input type="text"
-          onChange={(e)=> setSearch(e.target.value)}
+          onChange={(e)=> {
+            setSearch(e.target.value);
+            history.replace(`/${e.target.value}`);
+          }
+          }
         />
       </label>
       <div className='list-container'>
