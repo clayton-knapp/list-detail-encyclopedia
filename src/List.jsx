@@ -5,9 +5,10 @@ import Item from './Item';
 
 export default function List() {
   // STATE
-  const PER_PAGE = 10;
+  const PER_PAGE = 20;
   const [pokemon, setPokemon] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [search, setSearch] = useState('');
 
   
   
@@ -18,12 +19,12 @@ export default function List() {
       const end = currentPage * PER_PAGE - 1;
       const start = end - PER_PAGE + 1;
 
-      const returnedPokemon = await fetchPokemon(start, end);
+      const returnedPokemon = await fetchPokemon(start, end, search);
       setPokemon(returnedPokemon);
     }
 
     fetchAndSetPokemon();
-  }, [currentPage]);
+  }, [currentPage, search]);
 
   return (
     <div className='list-page'>
@@ -31,14 +32,20 @@ export default function List() {
       <h3>Page: {currentPage}</h3>
       <div className='button-container'>
         <button
-          disabled={currentPage === 1}
+          disabled={currentPage === 1 || search}
           onClick={()=> setCurrentPage(currentPage - 1)}
         >Prev Page</button>
         <button
-          disabled={pokemon.length < PER_PAGE}
+          disabled={pokemon.length < PER_PAGE || search}
           onClick={()=> setCurrentPage(currentPage + 1)}
         >Next Page</button>
       </div>
+      <label htmlFor="">
+        Search: 
+        <input type="text"
+          onChange={(e)=> setSearch(e.target.value)}
+        />
+      </label>
       <div className='list-container'>
         {
           pokemon.map((pokemon, i) => 

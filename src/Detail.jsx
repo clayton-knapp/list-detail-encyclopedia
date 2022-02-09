@@ -26,10 +26,11 @@ export default function Detail() {
 
 
   return (
-    <div className='detail-page'
-      onClick={()=> window.open(currentPokemon.pokedex)}>
+    <div className='detail-page'>
       <Link to='/'>Go Home</Link>
-      <div className='details-container'>
+      <div className='details-container'
+        onClick={()=> window.open(currentPokemon.pokedex)}
+      >
         <h1>{firstLetterToUpperCase(currentPokemon.pokemon)}</h1>
         <h2>Type: {firstLetterToUpperCase(currentPokemon.type_1)}</h2>
         <img src={currentPokemon.url_image} alt="" />
