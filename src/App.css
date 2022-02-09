@@ -62,3 +62,22 @@
 .item img {
   width: 200px;
 }
+
+.detail-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.details-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  border-radius: 50px;
+  margin: 20px;
+  width: 600px;
+  cursor: pointer;
+
+}

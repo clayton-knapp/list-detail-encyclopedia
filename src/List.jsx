@@ -9,14 +9,14 @@ export default function List() {
   const [pokemon, setPokemon] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
 
-
-
-  // ON LOAD useEffect
+  
+  
+  // ON LOAD AND PAGE CHANGE useEffect
   useEffect(() => {
     
     async function fetchAndSetPokemon() {
       const end = currentPage * PER_PAGE - 1;
-      const start = end - PER_PAGE;
+      const start = end - PER_PAGE + 1;
 
       const returnedPokemon = await fetchPokemon(start, end);
       setPokemon(returnedPokemon);

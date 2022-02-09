@@ -8,3 +8,13 @@ export async function fetchPokemon(start, end) {
 
   return checkError(response);
 }
+
+export async function fetchSinglePokemon(id) {
+  const response = await client
+    .from('pokemon')
+    .select()
+    .match({ id: id })
+    .single();
+
+  return checkError(response);
+}
