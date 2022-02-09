@@ -22,7 +22,6 @@ export default function Detail() {
 
   }, [params.id]);
 
-  console.log(currentPokemon);
 
 
   return (
