@@ -9,10 +9,22 @@ export default function List() {
   const PER_PAGE = 20;
   const [pokemon, setPokemon] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [searchInput, setSearchInput] = useState('');
   const [search, setSearch] = useState('');
 
   const history = useHistory();
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    setSearch(searchInput);
+  }
   
+  //USE EFFECT FOR WHEN SEARCH CHANGES - URL UPDATES
+  useEffect(() => {
+    history.replace(`/${search}`);
+  }, [search, history]);
+  
+
   // ON LOAD AND PAGE CHANGE useEffect
   useEffect(() => {
     
@@ -41,16 +53,19 @@ export default function List() {
           onClick={()=> setCurrentPage(currentPage + 1)}
         >Next Page</button>
       </div>
-      <label htmlFor="">
-        Search: 
-        <input type="text"
-          onChange={(e)=> {
-            setSearch(e.target.value);
-            history.replace(`/${e.target.value}`);
-          }
-          }
-        />
-      </label>
+      <form action=""
+        onSubmit={handleSubmit}
+      >
+        <label htmlFor="">
+          Search: 
+          <input type="text"
+            onChange={(e)=> {
+              setSearchInput(e.target.value);
+            }
+            }
+          />
+        </label>
+      </form>
       <div className='list-container'>
         {
           pokemon.map((pokemon, i) => 
