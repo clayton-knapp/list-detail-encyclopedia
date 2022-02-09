@@ -2,17 +2,20 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { fetchPokemon } from './services/fetch-utils';
 import Item from './Item';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 
 export default function List() {
+
+  const history = useHistory();
+  const params = useParams();
+
   // STATE
   const PER_PAGE = 20;
   const [pokemon, setPokemon] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [searchInput, setSearchInput] = useState('');
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState((params.search) ? params.search : '');
 
-  const history = useHistory();
 
   function handleSubmit(e) {
     e.preventDefault();
