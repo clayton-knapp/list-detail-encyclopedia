@@ -12,9 +12,9 @@ export default function List() {
   // STATE
   const PER_PAGE = 20;
   const [pokemon, setPokemon] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(params.page ? parseInt(params.page) : 1);
   const [searchInput, setSearchInput] = useState('');
-  const [search, setSearch] = useState((params.search) ? params.search : '');
+  const [search, setSearch] = useState(params.search ? params.search : '');
 
 
   function handleSubmit(e) {
@@ -24,8 +24,8 @@ export default function List() {
   
   //USE EFFECT FOR WHEN SEARCH CHANGES - URL UPDATES
   useEffect(() => {
-    history.replace(`/${search}`);
-  }, [search, history]);
+    history.replace(`/${currentPage}/${search}`);
+  }, [search, history, currentPage]);
   
 
   // ON LOAD AND PAGE CHANGE useEffect

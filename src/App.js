@@ -14,7 +14,10 @@ function App() {
         <Route exact path ="/detail/:id">
           <Detail />
         </Route>
-        <Route exact path="/:search">
+        <Route exact path="/:page/:search">
+          <List />
+        </Route>
+        <Route exact path="/:page/">
           <List />
         </Route>
         {/* additional home route so it will go to list even if there is no search */}
