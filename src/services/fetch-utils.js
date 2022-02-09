@@ -1,6 +1,6 @@
 import { client, checkError } from './client.js';
 
-export async function fetchAllPokemon(start, end) {
+export async function fetchPokemon(start, end) {
   const response = await client
     .from('pokemon')
     .select()
