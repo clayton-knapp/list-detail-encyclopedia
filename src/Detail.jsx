@@ -27,7 +27,7 @@ export default function Detail() {
 
   return (
     <div className='detail-page'>
-      <Link to={(params.search) ? `/${params.page}/${params.search}` : `/${params.page}`}>Go Home</Link>
+      <Link to={(params.search) ? `/${params.page}/${params.search}` : `/${params.page}`}>Go Back</Link>
       <div className='details-container'
         onClick={()=> window.open(currentPokemon.pokedex)}
       >
