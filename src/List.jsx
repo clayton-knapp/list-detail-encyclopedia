@@ -76,6 +76,7 @@ export default function List() {
               key={pokemon.pokemon + i}
               pokemon={pokemon}
               currentPage = {currentPage}
+              search = {search}
             />
           )
         }

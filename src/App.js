@@ -11,6 +11,9 @@ function App() {
   return (
     <Router>
       <Switch>
+        <Route exact path ="/detail/:id/:page/:search">
+          <Detail />
+        </Route>
         <Route exact path ="/detail/:id/:page">
           <Detail />
         </Route>
